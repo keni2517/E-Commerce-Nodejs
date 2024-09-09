@@ -28,6 +28,12 @@ server.use("/api/user",userRoutes);
 const otpRoutes = require('./routes/otp.routes');
 server.use("/api/otp",otpRoutes);
 
+
+//Product Routes
+const productRoutes = require("./routes/product.routes");
+server.use("/api/product",productRoutes);
+
+
 server.listen(ports, () => {
     // Database connection
     mongoose
