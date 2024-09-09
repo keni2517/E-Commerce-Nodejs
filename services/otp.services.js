@@ -22,7 +22,7 @@ const sendOTP = async (email, otp) => {
 
         // Send the email with OTP
         await transporter.sendMail({
-            from: 'nodemailer26@gmail.com',  // Sender's email address
+            from: 'srushtikathiriya2003@gmail.com',  // Sender's email address
             to: email,                     // Recipient's email address
             subject: 'Your OTP Code',      // Email subject
             text: `Your OTP is ${otp}`,    // Email body (plain text)
