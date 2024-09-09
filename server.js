@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const ports = process.env.PORTS;
 const server = express();
+const path = require('path');
 
 
 
@@ -11,6 +12,7 @@ const server = express();
 server.use(morgan("dev"));
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
+server.use("/public/images",express.static(path.join(__dirname,"public/images")))
 
 server.get('/',(req,res)=>{
     res.send({msg:"welcome to Express Page"});
