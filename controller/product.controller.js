@@ -1,43 +1,17 @@
 const Product = require("../model/product.model");
 
-
-// Add New Product
+// Add New User
 exports.addNewProduct = async (req, res) => {
     try {
         // console.log(req.body);
-        const { title, description, category, price, discountPercentage, brand, 
-            sku, weight, rating, stock, tags, dimensions, reviews, returnPolicy, 
-            minimumOrderQuantity, meta, images, thumbnail, warrantyInformation, 
-            shippingInformation, availabilityStatus } = req.body;
-        let product = await Product.findOne({sku,isDeleted:false});
+        const { title, description, category, price, discountPercentage, brand, size,color,material,stock,
+              images,thumbnail, gender,occasion,season,availabilityStatus } = req.body;
+        let product = await Product.findOne({brand,isDelete:false});
         if(product)
             return res.status(400).json({message:"Product already exists"});
         product = await Product.create({
-            title,
-            description,
-            category,
-            price,
-            discountPercentage,
-            brand,
-            sku,
-            weight,
-            rating,
-            stock,
-            tags,
-            dimensions, // Make sure this is an object with width, height, and depth
-            reviews, 
-            images,
-            thumbnail,
-            warrantyInformation,
-            shippingInformation,
-            availabilityStatus,
-            meta: {
-                createdAt: new Date().toISOString(),
-                updatedAt: new Date().toISOString(),
-                barcode: "your-barcode-here",
-                qrCode: "your-qrCode-here"
-            }
-
+            title, description, category, price, discountPercentage, brand, size,color,material,stock,
+              images,thumbnail, gender,occasion,season,availabilityStatus
         });
         product.save();
         res.status(201).json({product,message:"Product Added"});
@@ -47,7 +21,7 @@ exports.addNewProduct = async (req, res) => {
     }
 };
 
-//Get All Product
+// Get All Users
 exports.getAllProduct = async(req,res) =>{
     try {
         let products = await Product.find();
@@ -59,7 +33,22 @@ exports.getAllProduct = async(req,res) =>{
     }
 }
 
-//Update Product
+// Get User by ID
+exports.getProduct = async(req,res)=>{
+    try{
+        // let user = await User.findOne({_id:req.query.userId});
+        let product = await Product.findById(req.query.productId);
+        if(!product)
+            return res.status(404).json({message:"Product not found"});
+        res.status(200).json(product);
+    }
+    catch(error){
+        console.log(error);
+        res.status(500).json({message:"Internal Server Error"})
+    }
+};
+
+// Update product
 exports.updateProduct = async(req,res)=>{
     try {
         let product = await Product.findById(req.query.productId);

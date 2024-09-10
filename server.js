@@ -31,8 +31,12 @@ server.use("/api/otp",otpRoutes);
 
 //Product Routes
 const productRoutes = require("./routes/product.routes");
-server.use("/api/product",productRoutes);
+server.use("/api/",productRoutes);
 
+//cart Routes
+
+const cartRoutes = require("./routes/cart.routes")
+server.use("/api/cart",cartRoutes);
 
 server.listen(ports, () => {
     // Database connection
