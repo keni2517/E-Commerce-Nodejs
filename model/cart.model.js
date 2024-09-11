@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 const cartSchema = mongoose.Schema({
-    user:{
+    userId:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'users'
     },
@@ -12,7 +12,6 @@ const cartSchema = mongoose.Schema({
     },
     quantity:{
         type:Number,
-        default:1
     },
     isDelete:{
         type: Boolean,
