@@ -45,6 +45,10 @@ server.use("/api/order",orderRoutes);
 const reviewRoutes=require('./routes/review.routes');
 server.use("/api/review",reviewRoutes)
 
+//wishlist Routes
+const wishlistRoutes=require('./routes/wishlist.routes')
+server.use("/api/wishlist",wishlistRoutes)
+
 server.listen(ports, () => {
     // Database connection
     mongoose
