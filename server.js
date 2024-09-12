@@ -28,20 +28,20 @@ server.use("/api/user",userRoutes);
 const otpRoutes = require('./routes/otp.routes');
 server.use("/api/otp",otpRoutes);
 
-
 //Product Routes
-const productRoutes = require("./routes/product.routes");
-server.use("/api/",productRoutes);
+const productRoutes = require('./routes/product.routes');
+server.use("/api/product",productRoutes);
 
-//cart Routes
-
-const cartRoutes = require("./routes/cart.routes")
+//Cart Routes
+const cartRoutes = require('./routes/cart.routes');
 server.use("/api/cart",cartRoutes);
 
 
 //order Routes
-const orderRoutes = require("./routes/order.routes");
-server.use("/api/orders",orderRoutes);
+const orderRoutes= require('./routes/order.routes');
+server.use("/api/order",orderRoutes);
+
+
 
 server.listen(ports, () => {
     // Database connection

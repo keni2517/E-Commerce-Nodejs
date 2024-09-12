@@ -1,19 +1,20 @@
 const express = require('express');
-const productRoutes = express.Router();
-const {
-    addNewProduct,
-    getAllProduct,
-    getProduct,
-    updateProduct,
-    deleteProduct
-} = require("../controller/product.controller");
-const { updateUser } = require('../controller/user.controller');
+const {addNewProduct , getAllProduct , getProduct , updateProduct , deleteProduct} = require('../controller/product.controller');
+const productRoutes = express.Router()
+const {verifyToken} = require('../helpers/tokenVerify')
 
-//  add new product - create
-productRoutes.post("/",addNewProduct);
-productRoutes.get("/",getAllProduct);
-productRoutes.get("/get-product",getProduct);
-productRoutes.put("/",updateProduct);
-productRoutes.delete("/",deleteProduct)
+productRoutes.post("/addNewProduct" , verifyToken , addNewProduct);
+
+// Get All Product
+productRoutes.get("/getAllProduct" , getAllProduct);
+
+//Get Only One Product
+productRoutes.get("/product" , getProduct);
+
+// Update Product
+productRoutes.put("/updateProduct" , updateProduct);
+
+// Delete Product
+productRoutes.delete("/deleteProduct" , deleteProduct);
 
 module.exports = productRoutes;
