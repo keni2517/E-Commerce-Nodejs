@@ -29,10 +29,6 @@ exports.getAllReview = async (req, res) => {
     }
 };
 
-
-
-
-
 exports.deleteReview = async (req, res) => {
     try {
         let review = await reviewService.getReviewById({_id: req.query.reviewId, isDelete: false});
