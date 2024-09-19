@@ -1,6 +1,7 @@
 const Order = require("../model/order.model");
 const Cart = require("../model/cart.model");
 
+
 exports.addNewOrder = async (req ,res) =>{
     try {
         let carts = await Cart.find({

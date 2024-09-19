@@ -35,7 +35,7 @@ exports.getAllProduct = async (req ,res) =>{
 exports.getProduct = async (req ,res) =>{
   try{
     // let product = await Product.findOne({_id :req.query.userId});
-    let product = await Product.findById(req.query.userId); 
+    let product = await productService.findProductId(req.query.userId); 
     if(!product)
       return res.status(404).json({message : "Product Not Found"});
     res.status(200).json(product)
@@ -48,7 +48,7 @@ exports.getProduct = async (req ,res) =>{
 // Update Product
 exports.updateProduct = async (req ,res) =>{
   try{
-    let product = await Product.findById(req.query.productId);
+    let product = await productService.findProductId(req.query.productId);
     if(!product){
       return res.status(404).json({message : "Product Not Found...."})
     }
@@ -66,7 +66,7 @@ exports.updateProduct = async (req ,res) =>{
 // Delete Product
 exports.deleteProduct = async (req ,res) =>{
   try{
-    let product = await Product.findById(req.query.productId);
+    let product = await productService.findProductId(req.query.productId);
     if(!product){
       return res.status(404).json({message : "Product Not Found...."})
     }

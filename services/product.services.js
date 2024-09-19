@@ -4,6 +4,9 @@ class ProductService {
     async findProduct(body) {
         return await Product.findOne(body);
     }
+    async findProductId(query) {
+        return await Product.findById(query);
+    }
 
     async getAllProducts(query) {
         const { page = 1, limit = 10, sort = 'price', search } = query;
