@@ -1,5 +1,4 @@
 
-
 // otpService.js
 const nodemailer = require('nodemailer');
 

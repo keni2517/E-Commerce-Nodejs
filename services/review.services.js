@@ -10,6 +10,16 @@ module.exports = class ReviewServices{
         }
     };
 
+    async deleteUser(body){
+        try{
+            return await Review.create(body);
+        }
+        catch(error){
+            console.log(error);
+            return error.message;
+        }
+    }
+
     async getAllReview(query) {
         try {
             let product = query.productId && query.productId !== undefined ? [
